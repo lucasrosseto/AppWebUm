@@ -4,6 +4,8 @@
     Author     : LRR_1
 --%>
 
+<%@page import="Conexao.ConectaBanco"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,5 +15,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+      
+        <a href="pais/cadpais.jsp">Cadastrar país</a>
+        
     </body>
 </html>
