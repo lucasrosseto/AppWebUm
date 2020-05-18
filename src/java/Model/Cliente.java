@@ -9,24 +9,24 @@ package Model;
  *
  * @author LRR_1
  */
-public class Usuarios {
+public class Cliente {
     
-    private int codusuario;
+    private int id_cliente;
     private String login;
     private String senha;
 
     /**
-     * @return the codusuario
+     * @return the id_cliente
      */
-    public int getCodusuario() {
-        return codusuario;
+    public int getId_cliente() {
+        return id_cliente;
     }
 
     /**
-     * @param codusuario the codusuario to set
+     * @param id_cliente the id_cliente to set
      */
-    public void setCodusuario(int codusuario) {
-        this.codusuario = codusuario;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
     /**

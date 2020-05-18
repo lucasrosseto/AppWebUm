@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class ConectaBanco {
     
-    private static String caminho = "jdbc:postgresql://localhost:5432/bancoum";
+    private static String caminho = "jdbc:postgresql://localhost:5432/vendas";
     private static String usuario = "postgres";
     private static String senha = "1515";
     private static Connection con;
