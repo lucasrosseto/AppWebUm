@@ -34,7 +34,9 @@
                 {    
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("var_sessao_login", objU.getLogin());
-                out.print("Bem vindo "+sessao.getAttribute("var_sessao_login"));
+                sessao.setAttribute("id_cliente", lista.get(i).getId_cliente());
+                //out.print("Bem vindo "+sessao.getAttribute("var_sessao_login"));
+                response.sendRedirect("listarprodutos.jsp");
                 }
             }
             

@@ -48,4 +48,28 @@ public class DAOProdutos {
         return lista;
     }
     
+    public Produtos BuscaProdID(Produtos param)
+    {
+        Produtos objP = new Produtos();
+        con = ConectaBanco.MetodoConexao();
+        String sql = "select * from produto where id_produto=?";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, param.getId_produto());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                objP.setId_produto(rs.getInt("id_produto"));
+                objP.setDescricao(rs.getString("descricao"));
+                objP.setPreco(rs.getInt("preco"));
+                objP.setEstoque(rs.getInt("estoque"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return objP;
+    }
+    
 }

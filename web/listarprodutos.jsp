@@ -19,6 +19,7 @@
         <h1>Hello World!</h1>
         <p>
         <%
+            Produtos p = new Produtos();
             List<Produtos> lista = new ArrayList<Produtos>();
             DAOProdutos objDao = new DAOProdutos();
             lista = objDao.ListarProduto();
@@ -26,7 +27,7 @@
             for(int i=0; i<lista.size(); i++)
             {
                 out.print("<form name='"+lista.get(i).getId_produto()+"'");
-                out.print(" action='addproduto.jsp method='POST'>");
+                out.print(" action='addproduto.jsp' method='POST'>");
                 out.print("ID:");
                 out.println(lista.get(i).getId_produto());
                 out.print(" Descrição:");
@@ -35,7 +36,8 @@
                 out.println(lista.get(i).getPreco());
                 out.print(" Estoque:");
                 out.println(lista.get(i).getEstoque());
-                out.print("<input type='submit' value='Comprar'");
+                out.print("<input name='id_produto' type='hidden' value='"+lista.get(i).getId_produto()+"' />");
+                out.print("<input type='submit' value='Comprar' />");
                 out.print("</form>");
                 out.println("<br>");
             }
