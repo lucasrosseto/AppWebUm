@@ -14,10 +14,10 @@
     <body>
         <h1>Hello World!</h1>
        
-            <%@include file="/validalogin.jsp"%>
-            
+            <%@include file="validalogin.jsp"%>
+            <%@include file="menu.jsp"%>
         <%
-            
+        
             
         
         %>

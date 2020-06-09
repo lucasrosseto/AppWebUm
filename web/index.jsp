@@ -14,12 +14,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Sistema de Compras AppWebUm</h1>
       
-        <a href="pais/cadpais.jsp">Cadastrar país</a><br>
-        <a href="pais/listarpais.jsp">Listar país</a><br>
-        <a href="login.jsp">Entrar</a><br>
-        <a href="listarprodutos.jsp">Produtos</a><br>
-        
+        <%@include file="menu.jsp"%>
+
     </body>
 </html>
