@@ -24,7 +24,7 @@ public class CtrCliente {
     
     Connection con;
     
-    public List<Cliente> ListarUsuario(Cliente p)
+    public List<Cliente> ListarCliente(Cliente p)
     {
         List<Cliente> lista = new ArrayList<Cliente>();
         
@@ -43,7 +43,7 @@ public class CtrCliente {
                 objU.setId_cliente(rs.getInt("id_cliente"));
                 objU.setLogin(rs.getString("login"));
                 objU.setSenha(rs.getString("senha"));
-                lista.add(p);
+                lista.add(objU);
             }
             
         } catch (SQLException ex) {

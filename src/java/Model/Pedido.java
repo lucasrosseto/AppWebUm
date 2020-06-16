@@ -15,6 +15,7 @@ public class Pedido {
     private int id_cliente;
     private int id_vendedor;
     private String prazo_entrega;
+    private String situacao;
 
     /**
      * @return the id_pedido
@@ -70,6 +71,20 @@ public class Pedido {
      */
     public void setPrazo_entrega(String prazo_entrega) {
         this.prazo_entrega = prazo_entrega;
+    }
+
+    /**
+     * @return the situacao
+     */
+    public String getSituacao() {
+        return situacao;
+    }
+
+    /**
+     * @param situacao the situacao to set
+     */
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
     
 }

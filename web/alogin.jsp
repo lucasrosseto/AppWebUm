@@ -26,7 +26,7 @@
             objU.setLogin(request.getParameter("login"));
             objU.setSenha(request.getParameter("senha"));
             
-            lista = objCtr.ListarUsuario(objU);
+            lista = objCtr.ListarCliente(objU);
             
             for(int i=0; i<lista.size(); i++)
             {
@@ -34,7 +34,6 @@
                 {    
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("logado", 1);
-                
                 sessao.setAttribute("var_sessao_login", objU.getLogin());
                 sessao.setAttribute("id_cliente", lista.get(i).getId_cliente());
                 //out.print("Bem vindo "+sessao.getAttribute("var_sessao_login"));

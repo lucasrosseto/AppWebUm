@@ -26,6 +26,7 @@
             
             out.print("<p>Cod.(");
             out.print(objP.getId_produto());
+            out.print("<input name='id_produto' type='hidden' value='"+objP.getId_produto()+"' />");
             out.print(")<br>");
             out.print(objP.getDescricao());
             out.print("<br>");

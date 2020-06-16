@@ -4,6 +4,10 @@
     Author     : LRR_1
 --%>
 
+<%@page import="Model.Cliente"%>
+<%@page import="DAO.DAOPedido"%>
+<%@page import="Model.Produtos"%>
+<%@page import="Model.Pedido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +22,29 @@
             <%@include file="menu.jsp"%>
         <%
         
+            Produtos p = new Produtos();
+            p.setId_produto(Integer.parseInt(request.getParameter("id_produto")));
+            //out.print("id p "+p.getId_produto());
+            //out.print(" id c "+sessao.getAttribute("id_cliente"));
+            Cliente c = new Cliente();
+            c.setId_cliente(Integer.parseInt(sessao.getAttribute("id_cliente").toString()));
             
+            DAOPedido DaoP = new DAOPedido();
+            Pedido ped = new Pedido();
+            ped.setId_cliente(Integer.parseInt(sessao.getAttribute("id_cliente").toString()));
+            
+            Pedido pedAux = new Pedido();
+            pedAux = DaoP.PesquisaPedidoAberto(c);
+            
+            if(pedAux.getSituacao().equals("ABERTO"))
+            {
+                
+            }
+            else
+            {
+                ped.setId_vendedor(1);
+                DaoP.CadastrarPedido(ped);
+            }
         
         %>
         
