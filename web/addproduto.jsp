@@ -32,6 +32,7 @@
             out.print("<br>");
             out.print("R$ ");
             out.print(objP.getPreco());
+            out.print("<input name='valor_venda' type='hidden' value='"+objP.getPreco()+"' />");
             out.print("<br>");
             out.print("Em estoque: ");
             out.print(objP.getEstoque());
