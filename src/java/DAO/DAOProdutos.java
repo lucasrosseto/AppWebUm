@@ -6,6 +6,7 @@
 package DAO;
 
 import Conexao.ConectaBanco;
+import Model.Cliente;
 import Model.Produtos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -72,4 +73,33 @@ public class DAOProdutos {
         return objP;
     }
     
+    public List<Produtos> ListarCarrinho(Cliente c)
+    {
+        List<Produtos> lista = new ArrayList<>();
+        con = ConectaBanco.MetodoConexao();
+        String sql = "select pd.id_produto, pd.estoque, pd.descricao, "
+                + "pd.preco from produto pd inner join item_do_pedido ip on"
+                + " pd.id_produto = ip.id_produto inner join pedido ped on"
+                + " ped.id_pedido = ip.id_pedido inner join cliente cli on"
+                + " cli.id_cliente = ?";
+        ResultSet rs;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, c.getId_cliente());
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Produtos p = new Produtos();
+                p.setId_produto(rs.getInt("id_produto"));
+                p.setDescricao(rs.getString("descricao"));
+                p.setEstoque(rs.getInt("estoque"));
+                p.setPreco(rs.getInt("preco"));
+                lista.add(p);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lista;
+    }
 }

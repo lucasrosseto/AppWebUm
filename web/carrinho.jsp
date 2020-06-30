@@ -1,12 +1,13 @@
 <%-- 
-    Document   : carrinho
-    Created on : 22/06/2020, 22:02:11
+    Document   : addproduto
+    Created on : 01/06/2020, 20:37:32
     Author     : LRR_1
 --%>
 
-<%@page import="DAO.DAOProdutos"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="Model.Cliente"%>
+<%@page import="DAO.DAOProdutos"%>
 <%@page import="Model.Produtos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,33 +15,56 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        <%@include file="validalogin.jsp"%>
+        <%@include file="menu.jsp"%>
+        
     </head>
     <body>
-        <h1>Carrinho</h1>
-        <p>
+        
+        
         <%
-            Produtos p = new Produtos();
+            
+            //Produtos objP = new Produtos();
             List<Produtos> lista = new ArrayList<Produtos>();
-            DAOProdutos objDao = new DAOProdutos();
-            lista = objDao.ListarProduto();
+            //objP.setId_produto(Integer.parseInt(request.getParameter("id_produto")));
+            DAOProdutos objDAOP = new DAOProdutos();
+            Cliente objC = new Cliente();
+            objC.setId_cliente(Integer.parseInt(sessao.getAttribute("id_cliente").toString()));
+            
+            lista = objDAOP.ListarCarrinho(objC);
             
             for(int i=0; i<lista.size(); i++)
             {
-                out.print("<form name='"+lista.get(i).getId_produto()+"'");
-                out.print(" action='addproduto.jsp' method='POST'>");
-                out.print("ID:");
-                out.println(lista.get(i).getId_produto());
-                out.print(" Descrição:");
-                out.println(lista.get(i).getDescricao());
-                out.print(" Preço:");
-                out.println(lista.get(i).getPreco());
-                out.print(" Estoque:");
-                out.println(lista.get(i).getEstoque());
-                out.print("<input name='id_produto' type='hidden' value='"+lista.get(i).getId_produto()+"' />");
-                out.print("<input type='submit' value='Comprar' />");
-                out.print("</form>");
-                out.println("<br>");
+            out.print("<form name='f' action='addpedido.jsp' method='POST'>");
+            
+            out.print("<h1>"+lista.get(i).getDescricao()+"</h1>");
+            out.print("<p>Cod.(");
+            out.print(lista.get(i).getId_produto());
+            out.print("<input name='id_produto' type='hidden' value='"+lista.get(i).getId_produto()+"' />");
+            out.print(")<br>");
+            out.print(lista.get(i).getDescricao());
+            out.print("<br>");
+            out.print("R$ ");
+            out.print(lista.get(i).getPreco());
+            out.print("<input name='valor_venda' type='hidden' value='"+lista.get(i).getPreco()+"' />");
+            out.print("<br>");
+            out.print("Em estoque: ");
+            out.print(lista.get(i).getEstoque());
+            out.print("<br>");
+            out.print("<select name='quantidade'>");
+            for(int j=0;j<=lista.get(i).getEstoque(); j++)
+            {
+                if(j != 0)
+                out.print("<option value='"+j+"'>"+j+"</option>");
+            }
+            out.print("</select>");
+            out.print("<input type='submit' value='Comprar' />");
+            
+            out.print("</form>");
             }
         %>
+      
+        
     </body>
 </html>

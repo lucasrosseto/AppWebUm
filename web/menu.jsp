@@ -15,7 +15,8 @@
             if (sessaomenu.getAttribute("var_sessao_login")==null)
                 out.print("<a href='login.jsp'>Entrar</a><br>");
             else
-               out.print("<a href='logoff.jsp'>Sair</a><br>");
+                out.print("<a href='carrinho.jsp'>Carrinho</a><br>");
+                out.print("<a href='logoff.jsp'>Sair</a><br>");
         %>
         
                       
