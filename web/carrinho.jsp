@@ -4,6 +4,8 @@
     Author     : LRR_1
 --%>
 
+<%@page import="DAO.DAOItem_do_pedido"%>
+<%@page import="Model.Item_do_pedido"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.Cliente"%>
@@ -53,11 +55,19 @@
             out.print(lista.get(i).getEstoque());
             out.print("<br>");
             out.print("<select name='quantidade'>");
+            Item_do_pedido obji = new Item_do_pedido();
+            DAOItem_do_pedido daoI = new DAOItem_do_pedido();
+            obji.setId_produto(lista.get(i).getId_produto());
+            obji.setId_pedido(lista.get(i).getId_produto());
+            
+            out.print("<option selected value='"+obji.getQuantidade()+"'>"+obji.getQuantidade()+"</option>");
+            
             for(int j=0;j<=lista.get(i).getEstoque(); j++)
             {
                 if(j != 0)
                 out.print("<option value='"+j+"'>"+j+"</option>");
             }
+            
             out.print("</select>");
             out.print("<input type='submit' value='Comprar' />");
             

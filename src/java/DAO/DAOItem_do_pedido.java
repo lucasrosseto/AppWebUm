@@ -56,6 +56,33 @@ public class DAOItem_do_pedido {
         }
     }
     
+    public Item_do_pedido RecuperarItemUnitario(Item_do_pedido i)
+    {
+        Item_do_pedido obji = new Item_do_pedido();
+        String sql = "select * from item_do_pedido"
+                + " where id_pedido=? and id_produto=?";
+        con = ConectaBanco.MetodoConexao();
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, i.getId_pedido());
+            ps.setInt(2, i.getId_produto());
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                obji.setId_pedido(rs.getInt("id_pedido"));
+                obji.setId_produto(rs.getInt("id_produto"));
+                obji.setQuantidade(rs.getInt("quantidade"));
+                obji.setValor_venda(rs.getInt("valor_venda"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOItem_do_pedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return obji;
+    }
+    
     public void PesquisaItemExistente(Item_do_pedido i)
     {
         String sql = "select * from item_do_pedido where id_pedido=? and id_produto=?";

@@ -18,7 +18,14 @@
     <body>
         <h1>Hello World!</h1>
         
+        <select name="lista">
+            <option value="1">UM</option>
+            <option value="2">DOIS</option>
+            <option value="3" selected>TRES</option>
+        </select>
+        
         <%
+            /*
             Connection con;
             PreparedStatement ps;
             ResultSet rs;
@@ -33,7 +40,7 @@
             while(rs.next())
                 out.print(rs.getInt("id_vendedor"));
             
-            
+            */
         %>
         
     </body>
