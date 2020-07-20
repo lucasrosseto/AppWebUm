@@ -10,11 +10,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        <script>
+            
+            function validarf()
+            {
+                if(document.f.login.value == "")
+                {
+                    alert('Campo não pode ser vazio');
+                    document.f.login.focus();
+                    return false;
+                }
+            }
+            
+        </script>
+        
     </head>
     <body>
         <h1>Login</h1>
         <p>
-        <form name="f" method="POST" action="alogin.jsp">
+        <form name="f" method="GET" action="alogin.jsp" onsubmit="validarf();">
             
             Login: <input type="text" name="login" /><br>
             Senha: <input type="text" name="senha" /><br>
